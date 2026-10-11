@@ -1,0 +1,15 @@
+# BloodLink — PostgreSQL driver (production / Postgres testing).
+#
+#   pip install -r requirements-postgres.txt
+#
+# Everything in requirements.txt plus the PostgreSQL driver. PostGIS is NOT
+# required: coordinates are stored as plain Float columns and distance math runs
+# through the haversine adapter on every engine (see apps/api/bloodlink_api/core/geo.py).
+-r requirements.txt
+
+psycopg[binary]>=3.2
+
+# Optional, only if you later index coordinates with PostGIS:
+#   sudo apt install postgresql-17-postgis-3   # or your distro's package
+#   psql -d bloodlink -c "CREATE EXTENSION postgis;"
+# geoalchemy2>=0.15

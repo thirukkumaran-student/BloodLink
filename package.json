@@ -1,0 +1,21 @@
+{
+  "name": "bloodlink",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BloodLink monorepo — FastAPI modular monolith API + React web client + shared Python contracts and a shared design system.",
+  "workspaces": [
+    "apps/web",
+    "packages/ui"
+  ],
+  "scripts": {
+    "dev": "npm --workspace @bloodlink/web run dev",
+    "build": "npm --workspace @bloodlink/web run build",
+    "preview": "npm --workspace @bloodlink/web run preview"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}

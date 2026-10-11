@@ -1,0 +1,119 @@
+/* ==========================================================================
+   BloodLink design tokens — OWNER: D1 (spec §17, §18)
+
+   This file is the single source of the global visual language. Feature
+   developers compose `<Button>`/`<Card>`/... and reference `var(--bl-*)`
+   tokens; they never hard-code colours, spacing, radii or typography.
+
+   Changing a value here restyles the entire application.
+   ========================================================================== */
+
+:root {
+  /* ---- brand & semantic colours ---------------------------------------- */
+  --bl-color-primary: #b3122b;
+  --bl-color-primary-hover: #97101f;
+  --bl-color-primary-soft: #fdecef;
+  --bl-color-primary-contrast: #ffffff;
+
+  --bl-color-secondary: #123055;
+  --bl-color-secondary-hover: #0d2542;
+  --bl-color-secondary-soft: #eaf0f8;
+
+  --bl-color-accent: #0f766e;
+  --bl-color-accent-soft: #e6f4f2;
+
+  --bl-color-success: #146c43;
+  --bl-color-success-soft: #e6f4ec;
+  --bl-color-warning: #a15c07;
+  --bl-color-warning-soft: #fdf3e3;
+  --bl-color-danger: #b42318;
+  --bl-color-danger-soft: #fdeceb;
+  --bl-color-info: #1d4ed8;
+  --bl-color-info-soft: #eaefff;
+
+  /* ---- surfaces & text ------------------------------------------------- */
+  --bl-color-bg: #f6f7f9;
+  --bl-color-surface: #ffffff;
+  --bl-color-surface-alt: #f1f3f6;
+  --bl-color-surface-raised: #ffffff;
+  --bl-color-border: #dfe3e8;
+  --bl-color-border-strong: #c3c9d2;
+  --bl-color-text: #16202c;
+  --bl-color-text-muted: #5b6673;
+  --bl-color-text-subtle: #7d8794;
+  --bl-color-text-inverse: #ffffff;
+  --bl-color-overlay: rgba(12, 20, 30, 0.48);
+
+  /* ---- typography ------------------------------------------------------ */
+  --bl-font-sans: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --bl-font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --bl-font-size-xs: 0.75rem;
+  --bl-font-size-sm: 0.8125rem;
+  --bl-font-size-base: 0.9375rem;
+  --bl-font-size-md: 1rem;
+  --bl-font-size-lg: 1.125rem;
+  --bl-font-size-xl: 1.375rem;
+  --bl-font-size-2xl: 1.75rem;
+  --bl-font-size-3xl: 2.25rem;
+
+  --bl-font-weight-regular: 400;
+  --bl-font-weight-medium: 500;
+  --bl-font-weight-semibold: 600;
+  --bl-font-weight-bold: 700;
+
+  --bl-line-height-tight: 1.2;
+  --bl-line-height-snug: 1.35;
+  --bl-line-height-base: 1.55;
+
+  /* ---- spacing --------------------------------------------------------- */
+  --bl-space-1: 0.25rem;
+  --bl-space-2: 0.5rem;
+  --bl-space-3: 0.75rem;
+  --bl-space-4: 1rem;
+  --bl-space-5: 1.5rem;
+  --bl-space-6: 2rem;
+  --bl-space-7: 2.5rem;
+  --bl-space-8: 3rem;
+  --bl-space-9: 4rem;
+
+  /* ---- radius, shadow, borders ---------------------------------------- */
+  --bl-radius-xs: 4px;
+  --bl-radius-sm: 6px;
+  --bl-radius-md: 10px;
+  --bl-radius-lg: 14px;
+  --bl-radius-pill: 999px;
+
+  --bl-shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --bl-shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --bl-shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --bl-shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.16);
+  --bl-border-width: 1px;
+
+  /* ---- breakpoints (documented; media queries use these values) -------- */
+  --bl-breakpoint-sm: 640px;
+  --bl-breakpoint-md: 900px;
+  --bl-breakpoint-lg: 1200px;
+
+  /* ---- layout ---------------------------------------------------------- */
+  --bl-container-max: 1240px;
+  --bl-header-height: 64px;
+  --bl-sidebar-width: 248px;
+
+  /* ---- motion ---------------------------------------------------------- */
+  --bl-transition-fast: 120ms ease;
+  --bl-transition-base: 180ms ease;
+  --bl-z-modal: 1000;
+  --bl-z-toast: 1100;
+}
+
+/* Optional dark theme — opt in with <html data-theme="dark">. */
+[data-theme="dark"] {
+  --bl-color-bg: #101722;
+  --bl-color-surface: #172030;
+  --bl-color-surface-alt: #1d283a;
+  --bl-color-border: #2b3a4d;
+  --bl-color-text: #eef2f7;
+  --bl-color-text-muted: #a9b4c4;
+  --bl-color-primary-soft: #3a1420;
+}

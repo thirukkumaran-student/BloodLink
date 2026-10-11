@@ -1,0 +1,16 @@
+{
+  "name": "@bloodlink/ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BloodLink design system \u2014 OWNER: D1 (spec \u00a717, \u00a718). Tokens + shared React primitives.",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./styles/tokens.css": "./styles/tokens.css",
+    "./styles/components.css": "./styles/components.css"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  }
+}
