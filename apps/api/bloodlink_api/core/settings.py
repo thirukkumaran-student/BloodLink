@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import os
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from bloodlink_config.paths import PROJECT_ROOT
@@ -66,7 +66,46 @@ class Settings(BaseSettings):
         if isinstance(value, str):
             return value.strip().lower() in {"1", "true", "yes", "on"}
         return value
+    
+    @model_validator(mode="after")
+    def validate_production_settings(self) -> "Settings":
+        if not self.is_production:
+            return self
 
+        errors: list[str] = []
+
+        if (
+            self.secret_key == "dev-only-insecure-secret-key-change-me"
+            or len(self.secret_key) < 32
+        ):
+            errors.append(
+                "BLOODLINK_SECRET_KEY must be a unique secret "
+                "containing at least 32 characters"
+            )
+
+        if self.is_sqlite:
+            errors.append(
+                "BLOODLINK_DATABASE_URL must use PostgreSQL in production"
+            )
+
+        if self.seed_on_startup:
+            errors.append(
+                "BLOODLINK_SEED_ON_STARTUP must be false in production"
+            )
+
+        if not self.cors_origins or "*" in self.cors_origins:
+            errors.append(
+                "BLOODLINK_CORS_ORIGINS must explicitly list "
+                "the production frontend origin(s)"
+            )
+
+        if errors:
+            raise ValueError(
+                "Invalid production configuration: " + "; ".join(errors)
+            )
+
+        return self
+    
     @property
     def is_production(self) -> bool:
         return self.env == "production"

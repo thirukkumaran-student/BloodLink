@@ -74,10 +74,9 @@ async def lifespan(app: FastAPI):
     # the same specification on one machine is normal, and this line is how you
     # tell instantly which database (and which instance) you are looking at.
     logger.info(
-        "api.starting env=%s database=%s target=%s geo=%s pushTransport=%s",
+        "api.starting env=%s database=%s geo=%s pushTransport=%s",
         settings.env,
         "sqlite" if settings.is_sqlite else "postgresql",
-        settings.resolved_database_url(),
         settings.geo_backend,
         settings.push_transport,
     )
